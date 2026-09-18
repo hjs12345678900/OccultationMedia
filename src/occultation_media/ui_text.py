@@ -1,0 +1,47 @@
+"""Chinese/English desktop labels, independent of exported media language."""
+TEXT = {
+ 'title': ('掩星动画生成器','Occultation Media'),
+ 'subtitle': ('ADV · SER · FITS · RAVF · LC  |  星场与 Tangra 光变曲线同步导出','ADV · SER · FITS · RAVF · LC  |  Synchronized field and Tangra light curve'),
+ 'files': ('输入与输出','Input and output'), 'source': ('观测文件','Observation file'),
+ 'csv': ('Tangra CSV','Tangra CSV'), 'output': ('输出文件夹','Output folder'),
+ 'browse': ('选择…','Browse…'), 'fits_folder': ('FITS 文件夹…','FITS folder…'),
+ 'observation': ('观测信息（UTC；预报留空则不显示）','Observation (UTC; blank prediction is hidden)'),
+ 'asteroid': ('小行星名称','Asteroid name'), 'star': ('目标星名称','Target star'),
+ 'date': ('事件日期 YYYY-MM-DD','Date YYYY-MM-DD'), 'predicted': ('预报 UTC（可留空）','Predicted UTC (optional)'),
+ 'uncertainty': ('预报 ± 秒（可留空）','Prediction ± seconds (optional)'), 'exposure': ('曝光时间（毫秒）','Exposure (ms)'),
+ 'first': ('源第 0 帧对应的 CSV 帧号','CSV frame at source index 0'),
+ 'margin': ('事件前后各保留（秒）','Margin before/after (s)'),
+ 'mapping': ('帧号对应：若裁剪录像从原始第 1500 帧开始，此处填 1500；请按 CSV 核实。','Frame mapping: if the clip starts at original frame 1500, enter 1500. Verify against the CSV.'),
+ 'optional': ('可选设置','Optional settings'),
+ 'low': ('首末低光通量帧号（可留空）','First/last low frames (optional)'),
+ 'target': ('目标像素 X Y（空白自动读取）','Target X Y (blank: auto CSV)'),
+ 'stride': ('每 N 帧显示一帧','Display every Nth frame'), 'hdu': ('FITS HDU（可留空）','FITS HDU (optional)'),
+ 'language': ('动画输出语言','Animation language'), 'byte_order': ('SER 字节序','SER byte order'),
+ 'mp4': ('同时生成 MP4','Also export MP4'),
+ 'stretch': ('固定拉伸：初始显示帧 0.5% / 99.95% 分位数，整段使用相同 asinh 参数。','Fixed stretch: first displayed frame, 0.5% / 99.95% limits; identical asinh mapping throughout.'),
+ 'generate': ('生成动画','Generate'), 'cancel': ('取消','Cancel'), 'reveal': ('打开结果文件夹','Open output folder'),
+ 'idle': ('选择观测文件与测光 CSV 后开始。','Choose an observation file and photometry CSV to begin.'),
+ 'running': ('正在生成… 大画幅或较长录像可能需要几分钟。','Generating… Large frames or long clips may take several minutes.'),
+ 'done': ('完成：GIF、预览和所选视频已保存。','Complete: GIF, previews and selected videos saved.'),
+ 'ended': ('任务已结束或取消；详细记录保存在输出文件夹。','Job ended or cancelled; details are in the output folder.'),
+ 'failed': ('生成失败，请查看下方日志。','Generation failed. See the log below.'),
+ 'cannot_start': ('无法开始','Unable to start'),
+ 'unexpected': ('无法开始，请检查输入。详细信息：','Unable to start. Check the input. Details:'),
+ 'all_files': ('所有文件','All files'), 'fits_prompt': ('选择 FITS 图像序列文件夹','Choose a FITS image sequence folder'),
+ 'both': ('中英文','Chinese + English'), 'zh': ('中文','Chinese'), 'en': ('英文','English'),
+ 'header': ('按文件头','From header'), 'little': ('小端','Little-endian'), 'big': ('大端','Big-endian'),
+ 'err_source': ('请选择观测文件或 FITS 文件夹。','Choose an observation file or FITS folder.'),
+ 'err_csv': ('请选择 Tangra 测光 CSV。','Choose a Tangra photometry CSV.'),
+ 'err_output': ('请选择输出文件夹。','Choose an output folder.'),
+ 'err_names': ('请填写小行星和目标星名称。','Enter the asteroid and target star names.'),
+ 'err_number': ('请检查数字参数；时间和曝光必须为有限数值。','Check numeric parameters; time and exposure must be finite numbers.'),
+ 'err_date': ('日期须为 YYYY-MM-DD，预报时间须为 HH:MM:SS，可带小数秒。','Use YYYY-MM-DD for date and HH:MM:SS for predicted UTC; fractional seconds are allowed.'),
+ 'err_exposure': ('曝光必须大于零，预报误差不能为负。','Exposure must be positive; prediction uncertainty cannot be negative.'),
+ 'err_stride': ('前后时长不能为负，抽帧步长必须至少为 1。','Margin must be nonnegative and stride must be at least 1.'),
+ 'err_pair': ('低光通量帧号或目标坐标需要两个数字，以空格分隔。','Low-state frames and target coordinates each require two numbers separated by spaces.'),
+}
+
+
+def text(key, language):
+    """Resolve a stable UI key; unsupported locales fall back to English."""
+    return TEXT[key][0 if language == 'zh' else 1]
